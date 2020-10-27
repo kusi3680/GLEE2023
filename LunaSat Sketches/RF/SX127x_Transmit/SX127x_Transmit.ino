@@ -1,7 +1,7 @@
 /*
-   RadioLib SX127x Transmit Example
+   RadioLib SX1272 Transmit Example
 
-   This example transmits packets using SX1278 LoRa radio module.
+   This example transmits packets using SX1272 LoRa radio module.
    Each packet contains up to 256 bytes of data, in the form of:
     - Arduino String
     - null-terminated char array (C-string)
@@ -19,7 +19,7 @@
 // include the library
 #include <RadioLib.h>
 
-// SX1278 has the following connections:
+// SX1272 has the following connections:
 // NSS pin:   10
 // DIO0 pin:  2
 // RESET pin: 9
@@ -28,13 +28,13 @@ SX1272 radio = new Module(10, 2, 9, 3);
 
 // or using RadioShield
 // https://github.com/jgromes/RadioShield
-//SX1278 radio = RadioShield.ModuleA;
+//SX1272 radio = RadioShield.ModuleA;
 
 void setup() {
   Serial.begin(9600);
 
-  // initialize SX1278 with default settings
-  Serial.print(F("[SX1278] Initializing ... "));
+  // initialize SX1272 with default settings
+  Serial.print(F("[SX1272] Initializing ... "));
   int state = radio.begin();
   if (state == ERR_NONE) {
     Serial.println(F("success!"));
@@ -56,7 +56,7 @@ void setup() {
 }
 
 void loop() {
-  Serial.print(F("[SX1278] Transmitting packet ... "));
+  Serial.print(F("[SX1272] Transmitting packet ... "));
 
   // you can transmit C-string or Arduino string up to
   // 256 characters long
@@ -76,7 +76,7 @@ void loop() {
     Serial.println(F(" success!"));
 
     // print measured data rate
-    Serial.print(F("[SX1278] Datarate:\t"));
+    Serial.print(F("[SX1272] Datarate:\t"));
     Serial.print(radio.getDataRate());
     Serial.println(F(" bps"));
 
